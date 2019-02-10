@@ -1,0 +1,29 @@
+-- background
+d1 $ s "supercomparator" # midinote ((irand 24) + 24)
+ # sustain "8" # attack "0.5" # hold "4" # release "4"
+ # voice "0.5" # resonance "0.9" # lfo "1" # speed "30" # pitch1 "4" # gain "0.7"
+
+ -- (1 + (run 8)) is the same as "1 2 3 4 5 6 7 8"
+-- how to build more interesting pattern?
+d2 $ sound "pluck*8" # n "1 2 3 4 5 6 7 8"
+
+d3
+$ fast 2
+-- swap with degrade to add randomness
+$ every 2 (|> gain "0")
+-- $ degrade
+$ sound "hardcore*2" # n "2"
+
+d4 $ degradeBy 0.25 $ sound "jungle:4*16" # n (5 + (run 8))
+
+d5 $ degradeBy 0.25 $ sound "pluck*8" # n "1 2 3 4 5 6 7 8" # speed 10
+
+-- wait a bit here
+
+mapM_ ($ silence) [d3, d4, d5]
+
+d2 $ silence
+
+xfadeIn 1 2 $ silence
+
+hush
