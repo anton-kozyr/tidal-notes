@@ -1,0 +1,21 @@
+-- draft zone
+
+d1 $ slow 2 $ sound "rave2*8" # n (run 8)
+
+d1 $ slow 2 $ sound "sn*8" # n (run 8)
+
+d1 $ fast 2 $ sound "sn:0"
+
+d1 $ silence
+
+
+-- start here
+
+d1 $ jux (iter 8) $ slow 4 $ (striate' 64 0.5 $ sound "rave:2")
+|+| speed "[[1 0.5 0.8 0.8]/2, [2 4 3 5 5 3 2 2]/5, [8 5 7 6 6 9 9 10 7]/3]"
+-- I don't understand these speed parameters
+-- they all stolen from: https://youtu.be/og8BSbltAV4?list=PLKgxw7RG3hcRHyBFsPr5opr1iu8wbNIgP&t=575
+
+
+d2 $ sound "sn:5 ~ sn:5 ~ ~ sn:0 [sn:5 sn:0] ~"
+|+| gain "1.2"
